@@ -1,0 +1,405 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary-red: #D71920;      /* Đỏ cờ */
+    --primary-gold: #C5A059;     /* Vàng đồng trang trọng */
+    --bg-beige: #FFFDF5;         /* Màu kem giấy dó */
+    --bg-white: #FFFFFF;
+    --text-dark: #3E3E3E;        /* Xám đen dễ đọc */
+    --text-light: #757575;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--bg-beige);
+}
+
+/* =========================================
+   2. GLOBAL UTILITIES
+   ========================================= */
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 60px 0; }
+.bg-beige { background-color: var(--bg-beige); }
+.bg-white { background-color: var(--bg-white); }
+.mt-5 { margin-top: 40px; }
+.text-center { text-align: center; }
+
+/* Headings */
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--primary-red);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+.section-heading::after {
+    content: ''; display: block; width: 50px; height: 3px;
+    background: var(--primary-gold); margin: 10px auto 0;
+}
+.sub-heading {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary-gold);
+    padding-left: 15px;
+}
+
+/* =========================================
+   3. HERO SECTION (ZONE 1)
+   ========================================= */
+.hero {
+    height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/President_Ho_Chi_Minh_visiting_a_military_unit_%281957%29.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(60, 10, 10, 0.7); /* Phủ màu đỏ đen mờ */
+}
+.hero-content { position: relative; z-index: 2; padding: 20px; }
+
+.badge {
+    background: var(--primary-gold);
+    color: #fff; padding: 5px 15px; border-radius: 20px;
+    font-size: 0.9rem; display: inline-block; margin-bottom: 15px;
+    font-weight: bold; letter-spacing: 1px;
+}
+.main-title {
+    font-family: var(--font-heading); font-size: 3rem;
+    line-height: 1.2; margin-bottom: 10px; text-transform: uppercase;
+}
+.slogan {
+    font-style: italic; font-size: 1rem; max-width: 600px;
+    margin: 0 auto; opacity: 0.9;
+}
+.scroll-down-btn {
+    display: block; margin-top: 30px; color: white;
+    font-size: 1.5rem; animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* =========================================
+   4. INTRO & ACHIEVEMENTS (ZONE 2)
+   ========================================= */
+.intro-flex {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 40px; margin-bottom: 50px;
+}
+.intro-img { flex: 1; min-width: 300px; }
+.intro-img img {
+    width: 100%; border-radius: 10px;
+    box-shadow: 10px 10px 0px var(--primary-gold);
+    border: 5px solid white;
+}
+.intro-text { flex: 1.5; min-width: 300px; }
+.intro-text h3 {
+    font-family: var(--font-heading); color: var(--primary-red);
+    font-size: 1.8rem; margin-bottom: 15px;
+    border-left: 4px solid var(--primary-gold); padding-left: 15px;
+}
+
+.achievement-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.ach-card {
+    background: white; padding: 25px 20px; border-radius: 8px;
+    text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s; border-bottom: 3px solid transparent;
+}
+.ach-card:hover {
+    transform: translateY(-5px); border-bottom: 3px solid var(--primary-red);
+}
+.ach-icon { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 15px; }
+.ach-card h4 { color: var(--primary-red); margin-bottom: 10px; font-size: 1.1rem; }
+
+/* =========================================
+   5. TIMELINE (ZONE 3)
+   ========================================= */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+/* Đường kẻ dọc */
+.timeline::after {
+    content: ''; position: absolute; width: 2px;
+    background-color: var(--primary-gold);
+    top: 0; bottom: 0; left: 20px;
+}
+.timeline-item {
+    padding: 10px 10px 10px 50px; position: relative; margin-bottom: 30px;
+}
+/* Chấm tròn */
+.timeline-item::after {
+    content: ''; position: absolute; width: 16px; height: 16px;
+    left: 13px; top: 15px; background-color: var(--primary-red);
+    border: 3px solid #fff; border-radius: 50%; z-index: 1;
+}
+.timeline-content {
+    background: var(--bg-beige); padding: 20px; border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--primary-red);
+}
+.year {
+    font-weight: bold; font-size: 1.5rem;
+    color: var(--primary-gold); font-family: var(--font-heading);
+}
+
+/* =========================================
+   6. TEACHINGS (ZONE 4)
+   ========================================= */
+.section-desc {
+    text-align: center; color: #777; font-style: italic; margin-bottom: 30px;
+}
+.teachings-list { max-width: 800px; margin: 0 auto; }
+.teaching-card {
+    background: white; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom: 30px;
+    border: 1px solid #eee;
+}
+.card-header {
+    background: var(--primary-red); color: white; padding: 15px 20px;
+    display: flex; align-items: center; gap: 15px;
+}
+.quote-icon-small { font-size: 1.2rem; opacity: 0.8; }
+.card-header h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: 0; }
+.card-body { padding: 25px; }
+.quote-content {
+    font-size: 1.1rem; font-style: italic; color: #444;
+    margin-bottom: 20px; text-align: center;
+}
+.btn-explain {
+    display: block; margin: 0 auto; background: white;
+    color: var(--primary-red); border: 1px solid var(--primary-red);
+    padding: 8px 20px; border-radius: 20px; cursor: pointer;
+    font-weight: bold; transition: all 0.3s;
+}
+.btn-explain:hover { background: var(--primary-red); color: white; }
+
+/* Accordion Effect */
+.explanation {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out;
+    background: #FFFDF5; border-radius: 8px; margin-top: 10px;
+}
+.explanation.open {
+    margin-top: 20px; padding: 20px; border: 1px dashed var(--primary-gold);
+}
+.explanation ul { padding-left: 20px; }
+.explanation li { margin-bottom: 10px; }
+
+/* =========================================
+   7. BOOKSHELF (ZONE 5) - HIỆU ỨNG 3D MỚI
+   ========================================= */
+.shelf-title {
+    font-size: 1.2rem; color: var(--text-dark);
+    border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px;
+}
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Tự động chia cột */
+    gap: 40px 30px; /* Khoảng cách hàng/cột */
+    padding-bottom: 20px;
+    border-bottom: 8px solid #E0C097; /* Kệ gỗ */
+    margin-bottom: 40px;
+}
+.book-card {
+    background: transparent;
+    cursor: pointer;
+    perspective: 1000px; /* Tạo chiều sâu 3D */
+    display: flex; flex-direction: column; align-items: center;
+}
+
+/* Khối sách 3D */
+.book-3d {
+    position: relative;
+    width: 100%; max-width: 150px; /* Giới hạn chiều rộng sách */
+    aspect-ratio: 2/3;
+    border-radius: 4px 8px 8px 4px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+    background: #eee;
+}
+.book-3d img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 4px 8px 8px 4px;
+}
+
+/* Gáy sách bóng */
+.book-shine {
+    position: absolute; top: 0; left: 0; bottom: 0; width: 15px;
+    background: linear-gradient(to right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+    z-index: 2; pointer-events: none; border-radius: 4px 0 0 4px;
+}
+
+/* Hover Effect */
+.book-card:hover .book-3d {
+    transform: translateY(-10px) rotateY(-15deg);
+    box-shadow: 15px 25px 30px rgba(0,0,0,0.3);
+}
+
+.book-info { text-align: center; margin-top: 15px; width: 100%; }
+.book-info h4 {
+    font-size: 0.95rem; font-weight: bold; margin-bottom: 8px;
+    display: -webkit-box; -webkit-box-orient: vertical;
+    overflow: hidden; height: 2.8em; line-height: 1.4em;
+}
+.read-btn {
+    font-size: 0.75rem; color: white; background: var(--primary-red);
+    border: none; padding: 6px 15px; border-radius: 20px;
+    cursor: pointer; font-weight: bold; transition: 0.3s;
+}
+.read-btn:hover { background: #b71c1c; transform: scale(1.05); }
+
+/* --- BOOK MODAL (POPUP ĐỌC SÁCH) --- */
+.book-modal {
+    display: none; position: fixed; z-index: 3000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+}
+.book-modal-content {
+    position: relative; width: 95%; height: 90%;
+    margin: 2% auto; background: white; border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); overflow: hidden;
+}
+.close-book {
+    position: absolute; top: 10px; right: 10px; color: #333;
+    font-size: 30px; font-weight: bold; cursor: pointer; z-index: 3001;
+    background: rgba(255,255,255,0.8); width: 40px; height: 40px;
+    text-align: center; line-height: 40px; border-radius: 50%;
+}
+#book-frame { width: 100%; height: 100%; border: none; }
+
+/* =========================================
+   8. GALLERY (ZONE 6) - ẢNH TƯ LIỆU
+   ========================================= */
+.gallery-category { margin-bottom: 50px; }
+.gallery-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+.gallery-item {
+    position: relative; overflow: hidden; border-radius: 8px;
+    cursor: pointer; aspect-ratio: 1/1; /* Ảnh vuông */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+}
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); display: flex;
+    align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay i { color: white; font-size: 2rem; }
+
+/* =========================================
+   9. LIGHTBOX (MODAL ẢNH)
+   ========================================= */
+.lightbox {
+    display: none; position: fixed; z-index: 2000;
+    padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto; background-color: rgba(0,0,0,0.95);
+}
+.lightbox-content {
+    margin: auto; display: block; width: auto; max-width: 90%;
+    max-height: 85vh; object-fit: contain; animation: zoom 0.4s;
+}
+@keyframes zoom { from {transform:scale(0.8); opacity:0} to {transform:scale(1); opacity:1} }
+.close-lightbox {
+    position: absolute; top: 20px; right: 30px; color: #f1f1f1;
+    font-size: 40px; font-weight: bold; cursor: pointer;
+}
+
+/* =========================================
+   10. FOOTER & ANIMATIONS
+   ========================================= */
+footer {
+    text-align: center; padding: 30px 20px;
+    background: #f0ebe0; font-size: 0.9rem; color: #666;
+}
+
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* =========================================
+   11. RESPONSIVE (DESKTOP)
+   ========================================= */
+@media (min-width: 768px) {
+    /* Timeline */
+    .timeline::after { left: 50%; margin-left: -1px; }
+    .timeline-item { width: 50%; margin-bottom: 0; padding: 0 40px; }
+    .timeline-item.left { left: 0; text-align: right; }
+    .timeline-item.right { left: 50%; }
+    .timeline-item.left::after { right: -25px; left: auto; }
+    .timeline-item.right::after { left: -9px; }
+    .timeline-content { border-left: none; }
+    .timeline-item.left .timeline-content { border-right: 4px solid var(--primary-red); }
+    .timeline-item.right .timeline-content { border-left: 4px solid var(--primary-red); }
+    
+    .main-title { font-size: 4rem; }
+}
+/* --- LIGHTBOX CONTROLS (Nút điều hướng ảnh) --- */
+.lightbox-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    padding: 20px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3); /* Nền mờ để dễ nhìn */
+    border-radius: 50%;
+    width: 60px; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s;
+    user-select: none; /* Chống bôi đen khi click nhanh */
+    z-index: 2002;
+}
+
+.lightbox-control:hover {
+    background: rgba(215, 25, 32, 0.8); /* Màu đỏ khi hover */
+}
+
+.lightbox-control.prev { left: 20px; }
+.lightbox-control.next { right: 20px; }
+
+/* Responsive: Trên điện thoại nút nhỏ hơn chút */
+@media (max-width: 768px) {
+    .lightbox-control {
+        width: 40px; height: 40px;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    .lightbox-control.prev { left: 10px; }
+    .lightbox-control.next { right: 10px; }
+}
